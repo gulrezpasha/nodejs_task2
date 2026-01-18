@@ -8,7 +8,6 @@ const addUser=(req,res,next)=>{
 app.get('/welcome',addUser,(req,res)=>{
     res.send(`<h1>Welcome ${req.user}</h1>`);
 })
-
 app.listen(port,()=>{
     console.log(`server is running on port ${port}`);
 })
