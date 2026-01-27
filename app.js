@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-const productsCategoriesRouter = require('./routes/productsCategories');
+
+
+const booksRouter = require('./routes/books');
 
 app.use(express.json());
 
@@ -10,7 +12,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', productsCategoriesRouter);
+
+
+app.use('/', booksRouter);
 
 const PORT = 4000;
 app.listen(PORT, () => {
