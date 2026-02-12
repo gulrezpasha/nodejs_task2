@@ -7,10 +7,25 @@
 </head>
 <body>
     <!-- <h1>Fetching All Products</h1> -->
-    <form action="" method="post">
-        <label for="product">Product Name</label>
-        <input type="text" id="product" name="productName">
-        <button type="submit">Add Product</button>
-    </form>
+        <form id="productForm">
+                <label for="product">Product Name</label>
+                <input type="text" id="product" name="productName">
+                <button type="submit">Add Product</button>
+        </form>
+        <div id="response"></div>
+        <script src="/js/axios.min.js"></script>
+        <script>
+            document.getElementById('productForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const productName = document.getElementById('product').value;
+                axios.post('/products', { productName })
+                    .then(function(response) {
+                        document.getElementById('response').innerText = JSON.stringify(response.data);
+                    })
+                    .catch(function(error) {
+                        document.getElementById('response').innerText = 'Error: ' + error;
+                    });
+            });
+        </script>
 </body>
 </html>

@@ -13,6 +13,7 @@ exports.getProductById = (req, res) => {
 };
 
 exports.addProduct = (req, res) => {
-  const message = productService.addProduct();
-  res.send(message);
+  const { productName } = req.body;
+  console.log('Product received:', productName);
+  res.json({ addedProduct: productName });
 };
