@@ -23,7 +23,18 @@
                         document.getElementById('response').innerText = JSON.stringify(response.data);
                     })
                     .catch(function(error) {
-                        document.getElementById('response').innerText = 'Error: ' + error;
+                        let errorMsg = 'Error: ';
+                        if (error.response) {
+                          
+                            errorMsg += error.response.status + ' - ' + (error.response.data.message || error.response.statusText);
+                        } else if (error.request) {
+                           
+                            errorMsg += 'No response from server.';
+                        } else {
+                            
+                            errorMsg += error.message;
+                        }
+                        document.getElementById('response').innerText = errorMsg;
                     });
             });
         </script>
